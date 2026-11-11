@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Student attendance tracker with daily records and CSV export." />
+  <title>Student Attendance Management</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><div class="container header-row"><div class="brand"><span class="brand-icon">✓</span><span>AttendEase <small>Student Attendance Management</small></span></div><span class="offline-tag">Offline • Browser storage</span></div></header>
+  <main class="container">
+    <section class="hero"><div><div class="eyebrow">CLASSROOM DASHBOARD</div><h1>Student Attendance</h1><p>Manage students, record daily attendance, and export reports in one place.</p></div><div class="date-control"><label for="date">Attendance date</label><input type="date" id="date" /></div></section>
+    <section class="stats" aria-label="Attendance summary">
+      <div class="stat"><span>Total students</span><strong id="total">0</strong></div><div class="stat"><span>Present today</span><strong id="present">0</strong></div><div class="stat"><span>Absent today</span><strong id="absent">0</strong></div><div class="stat"><span>Not marked</span><strong id="unmarked">0</strong></div>
+    </section>
+    <section class="panel"><div class="panel-top"><div><h2>Add Student</h2><p>Roll number must be unique.</p></div></div>
+      <form id="add-form" class="add-form"><label>Roll number<input id="roll" type="text" maxlength="30" placeholder="e.g. CSDA001" required /></label><label>Student name<input id="name" type="text" maxlength="100" placeholder="Enter full name" required /></label><label>Class / Section<input id="section" type="text" maxlength="50" placeholder="e.g. B.Sc CSDA A" required /></label><button class="primary" type="submit">+ Add Student</button></form>
+      <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+    </section>
+    <section class="panel"><div class="panel-top panel-top-wrap"><div><h2>Attendance Register</h2><p>Choose Present or Absent for the selected date. Changes save automatically.</p></div><div class="actions"><button type="button" id="mark-all" class="secondary">Mark all present</button><button type="button" id="csv" class="secondary">Export CSV</button></div></div>
+      <div class="filters"><input id="search" type="search" placeholder="Search name or roll number" aria-label="Search students" /><select id="class-filter" aria-label="Filter by class"><option value="">All classes</option></select></div>
+      <div class="table-scroll"><table><thead><tr><th>Roll No.</th><th>Student</th><th>Class / Section</th><th>Attendance</th><th>Overall %</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table></div><p class="empty" id="empty">Add a student to begin.</p>
+    </section>
+    <section class="footnote"><strong>How it works:</strong> Data is stored in this browser using localStorage, not on an online server. Export a CSV backup regularly. Do not use this demo as an official multi-user attendance register without a secure backend.</section>
+  </main>
+  <footer>Student Attendance Management System • Built with HTML, CSS & JavaScript</footer>
+</body>
+</html>
